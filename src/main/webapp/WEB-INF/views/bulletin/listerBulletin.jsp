@@ -83,7 +83,7 @@
 					<td> <c:out value="${bulletin.value.salaireBrut}" /> </td>
 					<td> <c:out value="${bulletin.value.netImposable}" /> </td>
 					<td> <c:out value="${bulletin.value.netAPayer}" /> </td>
-					<td> <c:out value="Visualiser" /> </td>			
+					<td><a class="navbar-brand" href="<c:url value="/mvc/bulletin/lister/${bulletin.key.id}"/>"> Visualiser</a></td>		
 				</tr>
 			
 		</c:forEach>

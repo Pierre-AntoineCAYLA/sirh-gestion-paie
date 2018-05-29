@@ -19,27 +19,16 @@ import javax.persistence.Table;
 public class BulletinSalaire {
 
 	@Id
-
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private Integer id;
-
 	@ManyToOne
-
 	@JoinColumn(name = "remunerationEmploye_id")
-
 	private RemunerationEmploye remunerationEmploye;
-
 	@ManyToOne
-
 	@JoinColumn(name = "periode_id")
-
 	private Periode periode;
-
 	@Column
-
 	private BigDecimal primeExceptionnelle;
-
 	@Column
 	ZonedDateTime date;
 
