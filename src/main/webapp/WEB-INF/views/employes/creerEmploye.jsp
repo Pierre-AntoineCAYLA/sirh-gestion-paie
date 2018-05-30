@@ -61,7 +61,8 @@
 					<label for="matricule">Matricule</label>
 				</div>
 				<div class="col-4">
-                  <form:input type="text" class="form-control" path="matricule" placeholder="Matricule" required=""/>
+                  <form:select path="matricule" items="${matricule}" id="matricule">
+					</form:select>
                 </div>
 			</div>
 
