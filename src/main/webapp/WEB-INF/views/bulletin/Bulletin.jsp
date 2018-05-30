@@ -14,7 +14,7 @@
 </head>
 
 
-
+<body>
 <header>
 	<h1>Bulletin de salaire</h1>
 </header>
@@ -84,6 +84,42 @@
 				<th>Cot patronal</th>
 			</tr>
 			
+			<tr>
+				<td>Salaire de base</td>
+				<td>${bulletin.remunerationEmploye.grade.nbHeuresBase}</td>
+				<td>${bulletin.remunerationEmploye.grade.tauxBase}</td>
+				<td>${bulletin.remunerationEmploye.grade.nbHeuresBase*bulletin.remunerationEmploye.grade.tauxBase}</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Prime Except</td>
+				<td></td>
+				<td></td>
+				<td>${bulletin.primeExceptionnelle}</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>Salaire Brut</td>
+				<td></td>
+				<td></td>
+				<td>${bulletin.primeExceptionnelle+bulletin.remunerationEmploye.grade.nbHeuresBase*bulletin.remunerationEmploye.grade.tauxBase}</td>
+				<td></td>
+				<td></td>
+			</tr>
+			
 		</table>
 		
 		<h4>Cotisations</h4>
@@ -96,6 +132,7 @@
 				<th>Taux Patronal</th>
 				<th>Cot patronal</th>
 			</tr>
+			
 			
 		</table>
 		
