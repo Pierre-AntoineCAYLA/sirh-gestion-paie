@@ -63,8 +63,8 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 			p.setDateFin(p.getDateDebut().with(TemporalAdjusters.lastDayOfMonth()));
 			periodeRepository.save(p);
 
-			ctx.close();
 		}
+		ctx.close();
 	}
 
 }
