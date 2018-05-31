@@ -123,6 +123,7 @@
 		</table>
 		
 		<h4>Cotisations</h4>
+		
 		<table>
 			<tr>
 				<th>Rubrique</th>
@@ -132,7 +133,18 @@
 				<th>Taux Patronal</th>
 				<th>Cot patronal</th>
 			</tr>
+		<%--<c:forEach var="cotisationNonImposable" items="${bulletin.remunerationEmploye.profilremuneration.cotisationNonImposables}"> 
+		
+			<tr>
+					<td> <c:out value="${bulletin.remunerationEmploye.profilremuneration.cotisation.libelle}" /></td>				
+					<td> <c:out value="" /></td>
+					<td> <c:out value="${bulletin.remunerationEmploye.profilremuneration.cotisation.tauxSalarial}" /></td>				
+					<td> <c:out value="" /></td>
+					<td> <c:out value="${bulletin.remunerationEmploye.profilremuneration.cotisation.tauxPatronal}" /></td>		
+					<td> <c:out value="" /></td>		
+				</tr>
 			
+		</c:forEach> --%>
 			
 		</table>
 		
