@@ -4,6 +4,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -51,6 +52,7 @@ public class BulletinController {
 		return mv;
 	}
 
+	@Secured("ROLE_ADMINISTRATEUR")
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
 	public String submitForm(@ModelAttribute("bulletin") BulletinSalaire bulletin) {
 		bulletin.setDate(ZonedDateTime.now());
@@ -58,6 +60,7 @@ public class BulletinController {
 		return "redirect:/mvc/bulletin/lister";
 	}
 
+	@Secured({ "ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR" })
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
 	public ModelAndView listerBulletin() {
 		ModelAndView mv = new ModelAndView();
@@ -66,6 +69,7 @@ public class BulletinController {
 		return mv;
 	}
 
+	@Secured({ "ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR" })
 	@RequestMapping(value = "/lister/{id}", method = RequestMethod.GET)
 	public ModelAndView afficherBulletin(@PathVariable int id) {
 		BulletinSalaire bulletin = bulletinSalaireRepository.findOne(id);

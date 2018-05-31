@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import dev.paie.entite.Cotisation;
@@ -13,11 +14,14 @@ import dev.paie.entite.Entreprise;
 import dev.paie.entite.Grade;
 import dev.paie.entite.Periode;
 import dev.paie.entite.ProfilRemuneration;
+import dev.paie.entite.Utilisateur;
+import dev.paie.entite.Utilisateur.ROLES;
 import dev.paie.repository.CotisationRepository;
 import dev.paie.repository.EntrepriseRepository;
 import dev.paie.repository.GradeRepository;
 import dev.paie.repository.PeriodeRepository;
 import dev.paie.repository.ProfilRemunerationRepository;
+import dev.paie.repository.UtilisateurRepository;
 
 @Service
 public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
@@ -31,6 +35,10 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 	@Autowired
 	private PeriodeRepository periodeRepository;
 	@Autowired
+	private UtilisateurRepository utilisateurRepository;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	@Autowired
 	private ProfilRemunerationRepository profilRemunerationRepository;
 
 	@Override
@@ -41,6 +49,11 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		for (Entreprise entreprise : entreprises) {
 			entrepriseRepository.save(entreprise);
 		}
+
+		utilisateurRepository
+				.save(new Utilisateur("admin", this.passwordEncoder.encode("admin"), true, ROLES.ROLE_ADMINISTRATEUR));
+		utilisateurRepository
+				.save(new Utilisateur("user", this.passwordEncoder.encode("user"), true, ROLES.ROLE_UTILISATEUR));
 
 		Collection<Grade> grades = ctx.getBeansOfType(Grade.class).values();
 		for (Grade grade : grades) {
@@ -65,6 +78,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 
 		}
 		ctx.close();
+
 	}
 
 }
